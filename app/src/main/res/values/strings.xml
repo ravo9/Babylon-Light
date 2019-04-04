@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Babylon Light</string>
+    <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
+
+    <string name="loading_posts">Loading posts...</string>
+    <string name="general_view">General View</string>
+    <string name="all_posts_have_been_loaded">All posts have been loaded.</string>
+    <string name="data_couldnt_be_fetched_network">Data couldn\'t be fetched. Check Internet connection.</string>
+    <string name="data_couldnt_be_fetched_server">Data couldn\'t be fetched. Contact server administrator.</string>
+   </resources>
