@@ -1,27 +1,26 @@
 package development.dreamcatcher.babylonlight.viewmodels
 
-import android.util.Log
-import androidx.lifecycle.MutableLiveData
+import android.content.Context
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import development.dreamcatcher.babylonlight.activities.GeneralViewActivity
 import development.dreamcatcher.babylonlight.apiservice.ApiUtils
+import development.dreamcatcher.babylonlight.data.DataRepository
 import development.dreamcatcher.babylonlight.data.pojo.Post
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.util.*
 
 
 class GeneralViewModel : ViewModel() {
 
     var activity: GeneralViewActivity? = null
-    var allPosts: MutableLiveData<List<Post>> = MutableLiveData()
+    //var allPosts: MutableLiveData<List<Post>> = MutableLiveData()
 
     init {
         ApiUtils.initializeAPIService()
+        DataRepository.initializeDataRepository()
+        DataRepository.fetchDataFromApi()
     }
 
-    fun fetchPosts() {
+    /*fun fetchDataFromApi() {
 
         ApiUtils.getPosts().enqueue(object: Callback<List<Post>> {
 
@@ -44,5 +43,6 @@ class GeneralViewModel : ViewModel() {
                 Log.e("Exception02:", t?.message)
             }
         })
-    }
+    }*/
+
 }

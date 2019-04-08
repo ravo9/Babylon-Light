@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.RecyclerView
 import development.dreamcatcher.babylonlight.R
+import development.dreamcatcher.babylonlight.activities.GeneralViewActivity
 import development.dreamcatcher.babylonlight.data.pojo.Post
 import kotlinx.android.synthetic.main.posts_list_row.view.*
 
@@ -41,6 +42,10 @@ class ListAdapter(private val items : List<Post>, private val context: Context, 
         holder.container?.startAnimation(animation)
 
         // Set onClickListener
+        holder.itemView.setOnClickListener{
+            //val itemId = items[position].id
+            (activity as GeneralViewActivity).displayDetailedView(0)
+        }
     }
 
     inner class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {

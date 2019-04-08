@@ -2,8 +2,9 @@ package development.dreamcatcher.babylonlight.data.pojo
 
 import com.google.gson.annotations.SerializedName
 
-data class Post(
-        @SerializedName("userId")       val userId: Int,
+data class Comment(
+        @SerializedName("postId")       val postId: Int,
         @SerializedName("id")           val id: Int,
-        @SerializedName("title")        val title: String,
+        @SerializedName("name")         val name: String,
+        @SerializedName("email")        val email: String,
         @SerializedName("body")         val body: String?)
