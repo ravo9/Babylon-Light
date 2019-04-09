@@ -43,8 +43,8 @@ class ListAdapter(private val items : List<Post>, private val context: Context, 
 
         // Set onClickListener
         holder.itemView.setOnClickListener{
-            //val itemId = items[position].id
-            (activity as GeneralViewActivity).displayDetailedView(0)
+            val postId = items[position].id
+            (activity as GeneralViewActivity).displayDetailedView(postId)
         }
     }
 

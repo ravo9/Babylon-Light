@@ -18,10 +18,6 @@ public class ApiUtils {
             apiClient = RetrofitClient.getClient(BASE_URL).create(ApiClient.class);
     }
 
-    /*public static Call<List<Post>> getPosts() {
-        return apiClient.getPosts();
-    }*/
-
     public static Single<List<Post>> getPosts() {
         return apiClient.getPosts();
     }

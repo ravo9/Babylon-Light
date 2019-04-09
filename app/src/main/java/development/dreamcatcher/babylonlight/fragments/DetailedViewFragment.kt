@@ -7,7 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import development.dreamcatcher.babylonlight.R
+import development.dreamcatcher.babylonlight.data.pojo.Post
+import development.dreamcatcher.babylonlight.data.pojo.User
 import development.dreamcatcher.babylonlight.viewmodels.DetailedViewModel
+import kotlinx.android.synthetic.main.fragment_detailed_view.*
 
 
 class DetailedViewFragment : Fragment() {
@@ -23,40 +26,29 @@ class DetailedViewFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_detailed_view, container, false)
 
-        // Fetch detailed data from the Back-end
-        //val itemId = this.arguments?.getInt("itemId")
-        //viewModel.getDetailedData(itemId!!)
-
         return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        /*btn_cross.setOnClickListener{
+        // Fetch detailed data from Data Repository
+        val postId = this.arguments?.getInt("postId")
+        if (postId != null) viewModel.getDetailedData(postId)
+
+        btn_cross.setOnClickListener{
            activity?.onBackPressed()
-        }*/
+        }
     }
 
-    /*fun setFetchedData(item: ItemDetailed?) {
-        textView_item_id.text = item?.id.toString()
-        textView_item_title.text = item?.title
-        textView_item_subtitle.text = item?.subtitle
-        textView_item_body.text = item?.body
-        textView_item_date.text = item?.date
-    }
+    fun setFetchedData(post: Post?, user: User?, commentsAmount: Int) {
+        textView_post_title.text = post?.title
+        textView_post_body.text = post?.body
+        textView_author_name.text = user?.name
+        val commentsAmountText = "Comments: " + commentsAmount.toString()
+        textView_comments_amount.text = commentsAmountText
 
-    fun dataFetchedProperly() {
+        // Switch off the progress bar (loading circle)
         progressBar.visibility = View.GONE
     }
-
-    fun dataFetcheNetworkError() {
-        progressBar.visibility = View.GONE
-        Toast.makeText(context, R.string.data_couldnt_be_fetched_network, Toast.LENGTH_LONG).show()
-    }
-
-    fun dataFetchServerError() {
-        progressBar.visibility = View.GONE
-        Toast.makeText(context, R.string.data_couldnt_be_fetched_server, Toast.LENGTH_LONG).show()
-    }*/
 }

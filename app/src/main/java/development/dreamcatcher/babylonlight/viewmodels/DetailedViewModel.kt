@@ -1,6 +1,9 @@
 package development.dreamcatcher.babylonlight.viewmodels
 
 import androidx.lifecycle.ViewModel
+import development.dreamcatcher.babylonlight.data.DataRepository
+import development.dreamcatcher.babylonlight.data.pojo.Post
+import development.dreamcatcher.babylonlight.data.pojo.User
 import development.dreamcatcher.pulselivelight.fragments.DetailedViewFragment
 
 
@@ -8,25 +11,17 @@ class DetailedViewModel : ViewModel() {
 
     var fragment: DetailedViewFragment? = null
 
-    fun getDetailedData(id: Int) {
+    fun getDetailedData(postId: Int) {
 
-        /*ApiUtils.getDetailedData(id).enqueue(object: Callback<ResponseMessageDetailedItem> {
+        val post: Post?
+        val user: User?
+        val commentsAmount: Int?
 
-            override fun onResponse(call: Call<ResponseMessageDetailedItem>?, response: Response<ResponseMessageDetailedItem>?) {
-                if (response!!.isSuccessful) {
-                    fragment?.setFetchedData(response.body()?.item)
-                    fragment?.dataFetchedProperly()
-                    Log.d("Connection state:", "Connection established")
-                } else {
-                    fragment?.dataFetchServerError()
-                    Log.e("Exception01:", response.message())
-                }
-            }
+        post = DataRepository.getPostById(postId)
+        val userId = post?.userId
+        user = DataRepository.getUserById(userId)
+        commentsAmount = DataRepository.getCommentsAmount(postId)
 
-            override fun onFailure(call: Call<ResponseMessageDetailedItem>?, t: Throwable?) {
-                fragment?.dataFetcheNetworkError()
-                Log.e("Exception02:", t?.message)
-            }
-        })*/
+        (fragment as DetailedViewFragment).setFetchedData(post, user, commentsAmount)
     }
 }

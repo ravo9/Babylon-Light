@@ -13,13 +13,6 @@ import java.util.List;
 
 public interface ApiClient {
 
-    /*@GET("/posts/")
-    @Headers({
-            "appVersion: 1.0.0",
-            "apiVersion: 1.0.0"
-    })
-    Call<List<Post>> getPosts();*/
-
     @GET("/posts/")
     @Headers({
             "appVersion: 1.0.0",

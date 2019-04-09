@@ -71,5 +71,19 @@ class DataRepository {
                     }
                 )
         }
+
+        fun getPostById(id: Int?) : Post? {
+            return allPosts.value?.find { post -> post.id == id }
+        }
+
+        fun getUserById(id: Int?) : User? {
+            return allUsers.value?.find { user -> user.id == id }
+        }
+
+        fun getCommentsAmount(postId: Int?) : Int {
+            val commentsAmount = allComments.value?.filter { comment -> comment.postId == postId }?.size
+            if (commentsAmount == null) return 0
+            else return commentsAmount
+        }
     }
 }

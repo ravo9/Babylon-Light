@@ -39,11 +39,11 @@ class GeneralViewActivity : AppCompatActivity() {
         })
     }
 
-    fun displayDetailedView(id: Int) {
+    fun displayDetailedView(postId: Int) {
 
         val fragment = DetailedViewFragment()
         val bundle = Bundle()
-        bundle.putInt("itemId", id)
+        bundle.putInt("postId", postId)
         fragment.arguments = bundle
 
         val fragmentTransaction = supportFragmentManager.beginTransaction()
