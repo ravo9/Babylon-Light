@@ -1,5 +1,6 @@
-package development.dreamcatcher.babylonlight.data
+package development.dreamcatcher.babylonlight.data.repositories
 
+import android.annotation.SuppressLint
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import development.dreamcatcher.babylonlight.apiservice.ApiUtils
@@ -19,9 +20,12 @@ class DataRepository {
         var allUsers: MutableLiveData<List<User>> = MutableLiveData()
         var allComments: MutableLiveData<List<Comment>> = MutableLiveData()
 
+        val errorFlag: MutableLiveData<Boolean> = MutableLiveData()
+
         fun initializeDataRepository() {
             if (dataRepository == null)
-                dataRepository = DataRepository()
+                dataRepository =
+                    DataRepository()
         }
 
         fun fetchDataFromApi() {
@@ -30,6 +34,7 @@ class DataRepository {
             fetchComments()
         }
 
+        @SuppressLint("CheckResult")
         private fun fetchPosts() {
 
             ApiUtils.getPosts()
@@ -39,11 +44,13 @@ class DataRepository {
                         allPosts.postValue(posts)
                     },
                     { throwable ->
+                        errorFlag.postValue(true)
                         Log.e("Error:", throwable.message)
                     }
                 )
         }
 
+        @SuppressLint("CheckResult")
         private fun fetchUsers() {
 
             ApiUtils.getUsers()
@@ -53,11 +60,13 @@ class DataRepository {
                         allUsers.postValue(users)
                     },
                     { throwable ->
+                        errorFlag.postValue(true)
                         Log.e("Error:", throwable.message)
                     }
                 )
         }
 
+        @SuppressLint("CheckResult")
         private fun fetchComments() {
 
             ApiUtils.getComments()
@@ -67,6 +76,7 @@ class DataRepository {
                         allComments.postValue(comments)
                     },
                     { throwable ->
+                        errorFlag.postValue(true)
                         Log.e("Error:", throwable.message)
                     }
                 )

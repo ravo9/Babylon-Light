@@ -8,12 +8,13 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import development.dreamcatcher.babylonlight.R
-import development.dreamcatcher.babylonlight.data.DataRepository
+import development.dreamcatcher.babylonlight.adapters.ListAdapter
+import development.dreamcatcher.babylonlight.data.repositories.DataRepository
 import development.dreamcatcher.babylonlight.data.pojo.Post
+import development.dreamcatcher.babylonlight.fragments.DetailedViewFragment
 import development.dreamcatcher.babylonlight.viewmodels.GeneralViewModel
-import development.dreamcatcher.pulselivelight.adapters.ListAdapter
-import development.dreamcatcher.pulselivelight.fragments.DetailedViewFragment
 import kotlinx.android.synthetic.main.general_view.*
+
 
 class GeneralViewActivity : AppCompatActivity() {
 
@@ -29,13 +30,21 @@ class GeneralViewActivity : AppCompatActivity() {
 
         // Fetch Posts from Data Repository
         loadFetchedPosts()
-
     }
 
     private fun loadFetchedPosts() {
+
         DataRepository.allPosts.observe(this, Observer<List<Post>> { posts ->
+
+            // Hide Loading Badge
+            dataFetchedProperly()
+
             recyclerView_posts.adapter = ListAdapter(posts, this, this)
             recyclerView_posts.layoutManager = LinearLayoutManager(this)
+        })
+
+        DataRepository.errorFlag.observe(this, Observer<Boolean> { errorOccured ->
+            dataFetchingError()
         })
     }
 
@@ -53,18 +62,12 @@ class GeneralViewActivity : AppCompatActivity() {
     }
 
     fun dataFetchedProperly() {
-        //progressBar.visibility = View.GONE
-        textView_loading.visibility = View.GONE
-        Toast.makeText(this, R.string.all_posts_have_been_loaded, Toast.LENGTH_LONG).show()
+        loading_container.visibility = View.GONE
+        appbar_container.visibility = View.VISIBLE
     }
 
-    fun dataFetcheNetworkError() {
-        //progressBar.visibility = View.GONE
-        Toast.makeText(this, R.string.data_couldnt_be_fetched_network, Toast.LENGTH_LONG).show()
-    }
-
-    fun dataFetchServerError() {
-        //progressBar.visibility = View.GONE
-        Toast.makeText(this, R.string.data_couldnt_be_fetched_server, Toast.LENGTH_LONG).show()
+    fun dataFetchingError() {
+        progressBar.visibility = View.GONE
+        Toast.makeText(this, R.string.data_couldnt_be_fetched, Toast.LENGTH_LONG).show()
     }
 }

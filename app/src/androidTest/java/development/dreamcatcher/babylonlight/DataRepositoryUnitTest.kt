@@ -1,6 +1,6 @@
 package development.dreamcatcher.babylonlight
 
-import development.dreamcatcher.babylonlight.data.DataRepository
+import development.dreamcatcher.babylonlight.data.repositories.DataRepository
 import development.dreamcatcher.babylonlight.data.pojo.Post
 import development.dreamcatcher.babylonlight.data.pojo.User
 import org.junit.Assert.assertEquals
@@ -15,9 +15,6 @@ class DataRepositoryUnitTest {
 
     @Before
     fun initializeDataRepository() {
-
-        //@Rule
-        //var rule: TestRule = Instant()
 
         // Initialize Data Repository as a Singleton
         DataRepository.initializeDataRepository()

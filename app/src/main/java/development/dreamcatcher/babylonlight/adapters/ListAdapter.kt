@@ -1,4 +1,4 @@
-package development.dreamcatcher.pulselivelight.adapters
+package development.dreamcatcher.babylonlight.adapters
 
 import android.app.Activity
 import android.content.Context
@@ -28,8 +28,8 @@ class ListAdapter(private val items : List<Post>, private val context: Context, 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         // Prepare fetched data
-        val id = "ID:" + items[position].id.toString()
-        val userId = "UserId:" + items[position].userId.toString()
+        val id = "ID: " + items[position].id.toString()
+        val userId = "UserId: " + items[position].userId.toString()
         val title = items[position].title
 
         // Set data within the holder

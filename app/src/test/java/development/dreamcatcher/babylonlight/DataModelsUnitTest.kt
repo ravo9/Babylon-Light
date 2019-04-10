@@ -3,7 +3,6 @@ package development.dreamcatcher.babylonlight
 import development.dreamcatcher.babylonlight.data.pojo.Post
 import development.dreamcatcher.babylonlight.data.pojo.User
 import org.junit.Assert.assertEquals
-import org.junit.Assert.assertSame
 import org.junit.Test
 
 

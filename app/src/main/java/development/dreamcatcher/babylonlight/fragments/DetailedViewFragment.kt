@@ -1,4 +1,4 @@
-package development.dreamcatcher.pulselivelight.fragments
+package development.dreamcatcher.babylonlight.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import com.squareup.picasso.Picasso
 import development.dreamcatcher.babylonlight.R
 import development.dreamcatcher.babylonlight.data.pojo.Post
 import development.dreamcatcher.babylonlight.data.pojo.User
@@ -24,9 +25,7 @@ class DetailedViewFragment : Fragment() {
         viewModel.fragment = this
 
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_detailed_view, container, false)
-
-        return view
+        return inflater.inflate(R.layout.fragment_detailed_view, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -47,6 +46,9 @@ class DetailedViewFragment : Fragment() {
         textView_author_name.text = user?.name
         val commentsAmountText = "Comments: " + commentsAmount.toString()
         textView_comments_amount.text = commentsAmountText
+
+        // Load avatar
+        Picasso.with(context).load(user?.avatarUrl).into(avatar)
 
         // Switch off the progress bar (loading circle)
         progressBar.visibility = View.GONE

@@ -24,7 +24,9 @@
         app:layout_constraintTop_toBottomOf="@id/spacing_top"
         app:layout_constraintBottom_toTopOf="@id/spacing_bottom"
         android:paddingTop="30dp"
-        android:paddingBottom="5dp">
+        android:paddingBottom="5dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp">
 
         <ImageButton
             android:id="@+id/btn_cross"
@@ -32,8 +34,8 @@
             android:layout_height="30dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginStart="30dp"
-            android:layout_marginLeft="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
             android:src="@drawable/ic_cross"
             android:scaleType="centerCrop"
             android:background="@null"/>
@@ -43,18 +45,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
+                android:textSize="18sp"
                 app:layout_constraintTop_toBottomOf="@id/btn_cross"
-                app:layout_constraintBottom_toTopOf="@id/textView_author_name"
                 android:layout_marginTop="40dp"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:id="@+id/avatar_container"
+                android:layout_marginTop="40dp"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView_post_title">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/avatar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
                 android:id="@+id/textView_author_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                app:layout_constraintTop_toBottomOf="@id/textView_post_title"
-                app:layout_constraintBottom_toTopOf="@id/textView_post_body"
-                android:layout_marginTop="15dp"/>
+                android:textSize="18sp"
+                app:layout_constraintTop_toBottomOf="@id/avatar_container"
+                android:layout_marginTop="40dp"/>
 
         <TextView
                 android:id="@+id/textView_post_body"
@@ -63,8 +83,7 @@
                 android:textAlignment="center"
                 android:lineSpacingExtra="5sp"
                 app:layout_constraintTop_toBottomOf="@id/textView_author_name"
-                app:layout_constraintBottom_toTopOf="@id/textView_comments_amount"
-                android:layout_marginTop="35dp"/>
+                android:layout_marginTop="40dp"/>
 
         <TextView
                 android:id="@+id/textView_comments_amount"
@@ -72,7 +91,7 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 app:layout_constraintTop_toBottomOf="@id/textView_post_body"
-                android:layout_marginTop="35dp"/>
+                android:layout_marginTop="40dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

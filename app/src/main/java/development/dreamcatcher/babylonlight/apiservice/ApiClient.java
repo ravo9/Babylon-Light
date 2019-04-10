@@ -3,13 +3,11 @@ package development.dreamcatcher.babylonlight.apiservice;
 import development.dreamcatcher.babylonlight.data.pojo.Comment;
 import development.dreamcatcher.babylonlight.data.pojo.Post;
 import development.dreamcatcher.babylonlight.data.pojo.User;
-import io.reactivex.Observable;
 import io.reactivex.Single;
-import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
-
 import java.util.List;
+
 
 public interface ApiClient {
 
