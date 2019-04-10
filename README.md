@@ -2,18 +2,18 @@
 
 A programming challenge given by Babylon Health
 
-What is done:
+1. The app architecture is based on the MVVM Design Pattern. Each screen consists of Activity or Fragment and its relevant ViewModel, being responsible for providing data.
 
-1. General sketch of the app architecture, based on the MVVM model.
-2. Networking part, which consists of API service and API Utils files. This part uses Retrofit and OkHttp libraries to communicate with Back-End.
-3. General View displaying list of all posts (Recycler View). I have added a simple animation that occurs when posts are loaded into the RecyclerView.
-These are also appropriate messages displayed by Toast when posts are loaded or when error occurs (simple implementation of error handling).
+2. The central part of data flow is Data Repository that has 2 main tasks. First is to fetch data from the Back-End (it's performed using separate ApiService), to cache it, and make accessible for particular viewmodels.
 
-What I would like to add to this implementation, having more time:
+Caching mechanism allows to use the application after the Internet connection is interrupted.
 
-1. Detailed View (I have created Activity file, but probably I would decide for Fragment rather).
-2. Testing, especially Unit Tests (jUnit, Mockito).
-3. Customized AppBar (in progress).
-4. Loading progress bar (in progress).
-5. Customized, planned, beautiful UI.
-6. More animations.
+3. ApiService consists of ApiClient (which is the final gate of this Front-End application) and ApiUtils class (being its interface). This part uses Retrofit2 library to perform communication with server.
+
+Flow of data given by server is operated by RxJava (Reactive Java) observables, that allows to manage data streams given by few separate end-points simultaneously, and its potential error states.
+
+GSON library is used for de-serializing data flowing from the Back-End.
+
+4. Unit Testing part consists of Local Unit Testing (performed for data models, like User and Post), and Instrumented Unit Testing (performed for Data Repository caching mechanism). 
+
+5. Alpha Testing has been separated from coding phase, and performed by developer on physical device.
