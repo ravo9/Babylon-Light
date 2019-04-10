@@ -4,7 +4,7 @@ A programming challenge given by Babylon Health
 
 1. The app architecture is based on the MVVM Design Pattern. Each screen consists of Activity or Fragment and its relevant ViewModel, being responsible for providing data.
 
-2. The central part of data flow is Data Repository that has 2 main tasks. First is to fetch data from the Back-End (it's performed using separate ApiService), to cache it, and make accessible for particular viewmodels.
+2. The central part of data flow is Data Repository that has 2 main tasks. First is to fetch data from the Back-End (it's performed using separate ApiService), to cache it, and make accessible for particular viewmodels. Data Repository has been implemented using Singleton design pattern.
 
 3. Caching mechanism allows to use the application after the Internet connection is interrupted.
 
@@ -14,6 +14,6 @@ A programming challenge given by Babylon Health
 
 6. GSON library is used for de-serializing data flowing from the Back-End.
 
-7. Unit Testing part consists of Local Unit Testing (performed for data models, like User and Post), and Instrumented Unit Testing (performed for Data Repository caching mechanism). 
+7. Unit Testing part consists of Local Unit Tests (performed for data models, like User and Post), and Instrumentation Unit Test (performed for Data Repository caching mechanism). 
 
 8. Alpha Testing has been separated from coding phase, and performed by developer on physical device.
