@@ -14,6 +14,6 @@ A programming challenge given by Babylon Health
 
 6. GSON library is used for de-serializing data flowing from the Back-End.
 
-7. Unit Testing part consists of Local Unit Tests (performed for data models, like User and Post), and Instrumentation Unit Test (performed for Data Repository caching mechanism). 
+7. Unit Testing part consists of Local Unit Tests (performed for data models, like Post, User and Comment), and Instrumentation Unit Test (performed for Data Repository Caching mechanism). 
 
 8. Alpha Testing has been separated from coding phase, and performed by developer on physical device.
